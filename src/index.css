@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 243 75% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 38 92% 50%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 243 75% 96%;
+        --accent-foreground: 243 75% 50%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 243 75% 50%;
+        --radius: 0.5rem;
+        
+        /* Custom Colors */
+        --indigo-50: 238 100% 97%;
+        --indigo-100: 231 100% 94%;
+        --indigo-500: 239 84% 67%;
+        --indigo-600: 243 75% 59%;
+        --indigo-700: 243 75% 50%;
+        --indigo-900: 244 55% 35%;
+        --amber-100: 48 96% 89%;
+        --amber-500: 38 92% 50%;
+        --slate-50: 210 40% 98%;
+        --slate-100: 210 40% 96%;
+        --slate-200: 214 32% 91%;
+        --slate-500: 215 16% 47%;
+        --slate-600: 215 19% 35%;
+        --slate-700: 217 19% 27%;
+        --slate-900: 222 47% 11%;
+        --success: 160 84% 39%;
+        --warning: 38 92% 50%;
+        --error: 0 84% 60%;
+        --info: 217 91% 60%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif;
+        @apply tracking-tight text-slate-900;
+    }
+    
+    code, pre {
+        font-family: 'JetBrains Mono', monospace;
+    }
+}
+
+@layer components {
+    /* Primary Button */
+    .btn-primary {
+        @apply h-10 px-6 py-2 bg-indigo-700 text-white rounded-md font-medium 
+               transition-all duration-300 hover:bg-indigo-600 hover:shadow-lg 
+               active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+    }
+    
+    /* Secondary Button */
+    .btn-secondary {
+        @apply h-10 px-6 py-2 bg-white text-slate-700 border border-slate-200 rounded-md 
+               font-medium transition-all duration-300 hover:bg-slate-50 hover:border-slate-300
+               active:scale-95 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2;
+    }
+    
+    /* Ghost Button */
+    .btn-ghost {
+        @apply h-10 px-4 py-2 text-slate-700 rounded-md font-medium 
+               transition-all duration-300 hover:bg-slate-100 
+               focus:outline-none focus:ring-2 focus:ring-slate-300;
+    }
+    
+    /* Card Styles */
+    .card-base {
+        @apply bg-white border border-slate-200 shadow-sm rounded-xl overflow-hidden;
+    }
+    
+    .card-hover {
+        @apply hover:shadow-md hover:border-indigo-200 transition-all duration-300;
+    }
+    
+    .card-interactive {
+        @apply card-base card-hover cursor-pointer hover:-translate-y-1;
+    }
+    
+    /* Glass Effect */
+    .glass-header {
+        @apply bg-white/80 backdrop-blur-md border-b border-slate-200/50;
+    }
+    
+    .glass-overlay {
+        @apply bg-slate-900/20 backdrop-blur-sm;
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500;
+    }
+    
+    /* Hero Gradient Background */
+    .hero-gradient {
+        @apply bg-gradient-to-br from-indigo-50 via-white to-slate-50;
+    }
+    
+    /* Input Styles */
+    .input-base {
+        @apply h-10 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm 
+               placeholder:text-slate-500 focus:outline-none focus:ring-2 
+               focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+    
+    /* Sidebar Navigation Item */
+    .nav-item {
+        @apply flex items-center gap-3 px-4 py-3 text-slate-600 rounded-lg 
+               transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-700;
+    }
+    
+    .nav-item-active {
+        @apply bg-indigo-50 text-indigo-700 font-medium;
+    }
+    
+    /* Badge Styles */
+    .badge-primary {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+               bg-indigo-100 text-indigo-700;
+    }
+    
+    .badge-success {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+               bg-emerald-100 text-emerald-700;
+    }
+    
+    .badge-warning {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+               bg-amber-100 text-amber-700;
+    }
+    
+    /* Progress Bar */
+    .progress-bar {
+        @apply h-2 bg-slate-200 rounded-full overflow-hidden;
+    }
+    
+    .progress-fill {
+        @apply h-full bg-indigo-600 rounded-full transition-all duration-500;
+    }
+    
+    /* Skeleton Loading */
+    .skeleton {
+        @apply animate-pulse bg-slate-200 rounded;
+    }
+    
+    /* Custom Scrollbar */
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e1 transparent;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 3px;
+    }
+}
+
+@layer utilities {
+    /* Animation Utilities */
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.4s ease-out;
+    }
+    
+    .animate-slide-in-right {
+        animation: slideInRight 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+        from { 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+        to { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    }
+    
+    @keyframes slideInRight {
+        from { 
+            opacity: 0; 
+            transform: translateX(20px); 
+        }
+        to { 
+            opacity: 1; 
+            transform: translateX(0); 
+        }
+    }
+    
+    /* Soft Shadow */
+    .shadow-soft {
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Glow Effect */
+    .shadow-glow {
+        box-shadow: 0 0 20px -5px rgba(67, 56, 202, 0.3);
+    }
+    
+    /* Text Selection */
+    ::selection {
+        @apply bg-indigo-200 text-indigo-900;
+    }
+}
+
+/* AI Chat Styles */
+.ai-message {
+    @apply bg-gradient-to-r from-indigo-50 to-white border border-indigo-100 rounded-xl p-4;
+}
+
+.user-message {
+    @apply bg-white border border-slate-200 rounded-xl p-4;
+}
+
+/* Markdown Content Styling */
+.markdown-content h1 {
+    @apply text-2xl font-bold mb-4 mt-6 text-slate-900;
+}
+
+.markdown-content h2 {
+    @apply text-xl font-semibold mb-3 mt-5 text-slate-800;
+}
+
+.markdown-content h3 {
+    @apply text-lg font-semibold mb-2 mt-4 text-slate-800;
+}
+
+.markdown-content p {
+    @apply mb-3 leading-relaxed text-slate-600;
+}
+
+.markdown-content ul, .markdown-content ol {
+    @apply mb-3 pl-6 space-y-1;
+}
+
+.markdown-content li {
+    @apply text-slate-600;
+}
+
+.markdown-content ul li {
+    @apply list-disc;
+}
+
+.markdown-content ol li {
+    @apply list-decimal;
+}
+
+.markdown-content strong {
+    @apply font-semibold text-slate-800;
+}
+
+.markdown-content code {
+    @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono text-indigo-700;
+}
+
+.markdown-content pre {
+    @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.markdown-content pre code {
+    @apply bg-transparent text-slate-100 p-0;
+}
+
+/* Debug wrapper */
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
