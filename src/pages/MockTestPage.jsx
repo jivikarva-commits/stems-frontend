@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { useAuth } from "../App";
 import { API } from "../App";
+import { GENERATE_ANSWER_ROUTE } from "../config/env";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -100,6 +101,10 @@ const MockTestPage = () => {
   // Results
   const [testResults, setTestResults] = useState(null);
   
+  // AI answer explanations
+  const [aiExplanations, setAiExplanations] = useState({});
+  const [loadingExplanation, setLoadingExplanation] = useState({});
+
   // History
   const [testHistory, setTestHistory] = useState([]);
 
@@ -161,6 +166,36 @@ const MockTestPage = () => {
       console.error("Failed to fetch history:", error);
     }
   };
+
+  const generateAnswer = async (questionIndex, question, correctAnswer) => {
+    setLoadingExplanation(prev => ({ ...prev, [questionIndex]: true }));
+    const token = localStorage.getItem("token");
+    console.log("API CALL:", `${API}${GENERATE_ANSWER_ROUTE}`);
+    try {
+      const response = await axios.post(
+        `${API}${GENERATE_ANSWER_ROUTE}`,
+        { question, correct_answer: correctAnswer },
+        {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          withCredentials: true
+        }
+      );
+      setAiExplanations(prev => ({
+        ...prev,
+        [questionIndex]: response.data.explanation || response.data.answer || ""
+      }));
+    } catch (error) {
+      if (error?.response?.status === 429) {
+        setShowUpgradePopup(true);
+      } else {
+        toast.error("Failed to generate explanation");
+        console.error(error);
+      }
+    } finally {
+      setLoadingExplanation(prev => ({ ...prev, [questionIndex]: false }));
+    }
+  };
+
 
   const generateTest = async () => {
     if (!selectedLevel || !selectedSubject || !topic) {
@@ -486,6 +521,29 @@ const MockTestPage = () => {
                           <p className="mt-3 text-sm text-slate-600 bg-white/50 p-3 rounded-lg">
                             <strong>Explanation:</strong> {result.explanation}
                           </p>
+                        )}
+                        {!result.is_correct && (
+                          <div className="mt-3">
+                            {aiExplanations[index] ? (
+                              <p className="text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg">
+                                <strong>AI Explanation:</strong> {aiExplanations[index]}
+                              </p>
+                            ) : (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="text-indigo-600 border-indigo-200 hover:bg-indigo-50"
+                                onClick={() => generateAnswer(index, result.question, result.correct_answer)}
+                                disabled={loadingExplanation[index]}
+                              >
+                                {loadingExplanation[index] ? (
+                                  <><Loader2 className="w-3 h-3 mr-1 animate-spin" />Generating…</>
+                                ) : (
+                                  <><Brain className="w-3 h-3 mr-1" />Get AI Explanation</>
+                                )}
+                              </Button>
+                            )}
+                          </div>
                         )}
                       </div>
                     </div>
