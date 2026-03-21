@@ -16,6 +16,7 @@ export const API_URL = trimTrailingSlash(
   readEnv("VITE_API_URL", "REACT_APP_BACKEND_URL", "REACT_APP_API_URL")
 );
 export const API = `${API_URL}/api`;
+export const GENERATE_ANSWER_ROUTE = "/ai/generate-answer";
 export const GOOGLE_CLIENT_ID =
   readEnv("VITE_GOOGLE_CLIENT_ID", "REACT_APP_GOOGLE_CLIENT_ID");
 export const RAZORPAY_KEY_ID =
