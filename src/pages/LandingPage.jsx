@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 import {
   Brain, FileText, BookOpen, Calendar, BarChart3, Scale,
   ArrowRight, GraduationCap, Sparkles, Trophy, Users,
@@ -166,6 +167,22 @@ function TestiCard({ name, level, text }) {
   );
 }
 
+/* ── FAQ Item ── */
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ background: G.surface2, border: `1px solid ${open ? G.goldBorder : G.border}`, borderRadius: 14, overflow: "hidden", transition: "border-color 0.2s" }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", background: "none", border: "none", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, cursor: "pointer", textAlign: "left" }}>
+        <span style={{ fontSize: 15, fontWeight: 600, color: G.text, lineHeight: 1.5 }}>{question}</span>
+        <span style={{ color: G.gold, flexShrink: 0, fontSize: 22, lineHeight: 1, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+      </button>
+      {open && (
+        <div style={{ padding: "0 24px 20px", fontSize: 14, color: G.textDim, lineHeight: 1.75 }}>{answer}</div>
+      )}
+    </div>
+  );
+}
+
 /* ─── Main Page ──────────────────────────────────────────────────── */
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -201,8 +218,99 @@ export default function LandingPage() {
 
   const font = "'DM Sans',system-ui,sans-serif";
 
+  const faqItems = [
+    { q: "What is STEMS AI?", a: "STEMS AI is India's AI-powered Company Secretary (CS) and STEM education platform. It provides 24/7 AI mentoring, adaptive mock tests, drafting simulators, smart study planners, and performance analytics for ICSI CSEET, Executive, and Professional level aspirants." },
+    { q: "Which ICSI levels does STEMS AI cover?", a: "STEMS AI covers all three ICSI levels: CSEET (foundation — Business Communication, Legal Aptitude, Economics, Current Affairs), Executive (Company Law, Tax, Contracts, Economic & Commercial Laws), and Professional (Governance, Restructuring, Resolution of Corporate Disputes)." },
+    { q: "How does the AI mentor work?", a: "The AI mentor provides personalised explanations tailored to your learning mode — beginner, exam-oriented, or practical. It uses real CS examples, step-by-step breakdowns, and adapts to your weak areas identified through your test and quiz performance." },
+    { q: "Is there a free trial?", a: "Yes, STEMS AI offers a 7-day free trial with full platform access. No credit card is required to start. You can explore all features including AI chat, mock tests, the drafting simulator, and the study planner." },
+    { q: "How is STEMS AI different from other CS coaching platforms?", a: "Unlike traditional coaching or static study material, STEMS AI combines AI-driven personalisation, real-time draft evaluation, adaptive study planning, and a comprehensive case law database — all in one platform available 24/7 on any device." },
+    { q: "Can I use STEMS AI on mobile?", a: "Yes, STEMS AI is fully responsive and works on mobile, tablet, and desktop. You can study, take mock tests, and chat with the AI mentor from anywhere." },
+    { q: "How does the mock test engine work?", a: "The mock test engine generates MCQs, descriptive, and case study questions aligned with the ICSI syllabus. After each test, the AI evaluates your answers, provides detailed feedback, assigns scores, and highlights topics to revise." },
+  ];
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "StemCSAI",
+      "alternateName": "STEMS AI",
+      "url": "https://stemscsai.in",
+      "logo": "https://stemscsai.in/logo.png",
+      "description": "India's AI-powered Company Secretary and STEM education platform for ICSI aspirants.",
+      "areaServed": "India",
+      "availableLanguage": ["English", "Hindi"],
+      "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "availableLanguage": "English" },
+      "sameAs": ["https://www.linkedin.com/company/stemscsai", "https://twitter.com/stemscsai"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://stemscsai.in",
+      "name": "StemCSAI",
+      "description": "AI-powered ICSI Company Secretary exam preparation platform for India.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://stemscsai.in/?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "ICSI CSEET Preparation — AI-Powered",
+      "description": "Complete ICSI CSEET foundation level preparation with AI mentor covering Business Communication, Legal Aptitude, Economics and Current Affairs.",
+      "provider": { "@type": "Organization", "name": "StemCSAI", "sameAs": "https://stemscsai.in" },
+      "url": "https://stemscsai.in/register",
+      "courseMode": "online",
+      "educationalLevel": "beginner",
+      "inLanguage": "en",
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT10H" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "ICSI Executive Level — AI-Powered CS Prep",
+      "description": "AI-driven ICSI Executive level preparation covering Company Law, Taxation, Contracts and Economic & Commercial Laws with mock tests and study planner.",
+      "provider": { "@type": "Organization", "name": "StemCSAI", "sameAs": "https://stemscsai.in" },
+      "url": "https://stemscsai.in/register",
+      "courseMode": "online",
+      "educationalLevel": "intermediate",
+      "inLanguage": "en",
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT30H" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "ICSI Professional Level — AI Mentoring & Analytics",
+      "description": "Advanced ICSI Professional level preparation with AI mentoring for Governance, Restructuring and Resolution of Corporate Disputes, with performance analytics.",
+      "provider": { "@type": "Organization", "name": "StemCSAI", "sameAs": "https://stemscsai.in" },
+      "url": "https://stemscsai.in/register",
+      "courseMode": "online",
+      "educationalLevel": "advanced",
+      "inLanguage": "en",
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT50H" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a }
+      }))
+    }
+  ];
+
   return (
     <div style={{ fontFamily: font, background: G.bg, color: G.text, minHeight: "100vh", overflowX: "hidden" }}>
+
+      <SEO
+        title="AI-Powered CS & STEM Education India — ICSI CSEET, Executive, Professional"
+        description="India's #1 AI-powered Company Secretary platform. AI mentoring, mock tests & study planner for ICSI CSEET, Executive & Professional. Start free trial today."
+        canonical="https://stemscsai.in/"
+        structuredData={structuredData}
+      />
 
       {/* Google Fonts */}
       <style>{`
@@ -314,11 +422,11 @@ export default function LandingPage() {
 
             {/* H1 */}
             <h1 className="lp-h2" style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: "clamp(36px,4.5vw,62px)", fontWeight: 900, lineHeight: 1.1, color: G.text, marginBottom: 22 }}>
-              Your 24/7 AI<br />
+              AI-Powered<br />
               <span style={{ background: `linear-gradient(135deg,${G.gold},#E8C470)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Company Secretary
+                CS &amp; STEM Education
               </span><br />
-              Mentor
+              for India
             </h1>
 
             <p style={{ fontSize: 17, color: G.textDim, lineHeight: 1.75, marginBottom: 34, fontWeight: 300, maxWidth: 480 }}>
@@ -454,20 +562,78 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── FOOTER ─────────────────────────────────────────────── */}
-      <footer style={{ padding: "36px clamp(16px,5vw,80px)", borderTop: `1px solid ${G.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16, background: G.bg }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 34, height: 34, background: `linear-gradient(135deg,${G.gold},${G.goldDim})`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <GraduationCap size={18} color="#07080F" />
+      {/* ── FAQ ────────────────────────────────────────────────── */}
+      <section id="faq" className="lp-section-pad" style={{ background: G.surface, padding: "90px clamp(16px,5vw,80px)" }}>
+        <div style={S.inner}>
+          <div style={S.label}><span style={{ display: "block", width: 24, height: 2, background: G.gold }} /> FAQ</div>
+          <h2 className="lp-h2" style={S.h2}>Frequently Asked Questions</h2>
+          <p style={{ ...S.sub, marginBottom: 48 }}>Everything you need to know about STEMS AI and ICSI CS exam preparation.</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {faqItems.map(({ q, a }, i) => (
+              <FAQItem key={i} question={q} answer={a} />
+            ))}
           </div>
-          <span style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 16, fontWeight: 700, color: G.text }}>STEMS AI</span>
         </div>
-        <p style={{ fontSize: 13, color: G.textDim }}>© 2025 STEMS AI. Designed for ICSI aspirants.</p>
-        <div style={{ display: "flex", gap: 24 }}>
-          {["Privacy", "Terms", "Contact"].map(l => (
-            <a key={l} href="#" style={{ fontSize: 13, color: G.textDim, textDecoration: "none" }}
-              onMouseEnter={e => (e.target.style.color = G.gold)} onMouseLeave={e => (e.target.style.color = G.textDim)}>{l}</a>
-          ))}
+      </section>
+
+      {/* ── FOOTER ─────────────────────────────────────────────── */}
+      <footer style={{ background: G.bg, borderTop: `1px solid ${G.border}` }}>
+        {/* Main footer grid */}
+        <div style={{ maxWidth: 1160, margin: "0 auto", padding: "52px clamp(16px,5vw,80px) 36px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 40 }}>
+          {/* Brand */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 36, height: 36, background: `linear-gradient(135deg,${G.gold},${G.goldDim})`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <GraduationCap size={18} color="#07080F" />
+              </div>
+              <span style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 17, fontWeight: 700, color: G.text }}>STEMS AI</span>
+            </div>
+            <p style={{ fontSize: 13, color: G.textDim, lineHeight: 1.7, maxWidth: 220 }}>India's AI-powered ICSI Company Secretary &amp; CS exam preparation platform.</p>
+          </div>
+
+          {/* Platform links */}
+          <nav aria-label="Platform">
+            <div style={{ fontSize: 11, fontWeight: 700, color: G.gold, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Platform</div>
+            {[["Features", "#features"], ["Courses", "#levels"], ["Pricing", "#pricing"], ["Reviews", "#testimonials"]].map(([label, href]) => (
+              <div key={label} style={{ marginBottom: 10 }}>
+                <a href={href} style={{ fontSize: 13, color: G.textDim, textDecoration: "none" }}
+                  onMouseEnter={e => (e.target.style.color = G.gold)} onMouseLeave={e => (e.target.style.color = G.textDim)}>{label}</a>
+              </div>
+            ))}
+          </nav>
+
+          {/* ICSI Levels links */}
+          <nav aria-label="ICSI Levels">
+            <div style={{ fontSize: 11, fontWeight: 700, color: G.gold, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>ICSI Levels</div>
+            {[["CSEET Preparation", "/register"], ["Executive Level", "/register"], ["Professional Level", "/register"]].map(([label, href]) => (
+              <div key={label} style={{ marginBottom: 10 }}>
+                <Link to={href} style={{ fontSize: 13, color: G.textDim, textDecoration: "none" }}
+                  onMouseEnter={e => (e.target.style.color = G.gold)} onMouseLeave={e => (e.target.style.color = G.textDim)}>{label}</Link>
+              </div>
+            ))}
+          </nav>
+
+          {/* Account & legal */}
+          <nav aria-label="Account">
+            <div style={{ fontSize: 11, fontWeight: 700, color: G.gold, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>Account</div>
+            {[["Sign Up Free", "/register"], ["Login", "/login"], ["FAQ", "#faq"]].map(([label, href]) => (
+              <div key={label} style={{ marginBottom: 10 }}>
+                <Link to={href} style={{ fontSize: 13, color: G.textDim, textDecoration: "none" }}
+                  onMouseEnter={e => (e.target.style.color = G.gold)} onMouseLeave={e => (e.target.style.color = G.textDim)}>{label}</Link>
+              </div>
+            ))}
+          </nav>
+        </div>
+
+        {/* Bottom bar */}
+        <div style={{ borderTop: `1px solid ${G.border}`, padding: "20px clamp(16px,5vw,80px)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <p style={{ fontSize: 12, color: G.textDim, margin: 0 }}>© 2025 STEMS AI. All rights reserved. Built for ICSI aspirants across India.</p>
+          <div style={{ display: "flex", gap: 20 }}>
+            {[["Privacy Policy", "#"], ["Terms of Service", "#"], ["Contact Us", "#"]].map(([label, href]) => (
+              <a key={label} href={href} style={{ fontSize: 12, color: G.textDim, textDecoration: "none" }}
+                onMouseEnter={e => (e.target.style.color = G.gold)} onMouseLeave={e => (e.target.style.color = G.textDim)}>{label}</a>
+            ))}
+          </div>
         </div>
       </footer>
 

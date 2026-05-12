@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -51,6 +52,13 @@ const RegisterPage = () => {
   };
 
   return (
+    <>
+    <SEO
+      title="Sign Up Free — STEMS AI ICSI CS Exam Prep Platform"
+      description="Create your free STEMS AI account and start AI-powered ICSI Company Secretary exam preparation. 7-day free trial. No credit card required."
+      canonical="https://stemscsai.in/register"
+      noIndex={false}
+    />
     <div className="min-h-screen hero-gradient flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
@@ -212,6 +220,7 @@ const RegisterPage = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -106,6 +107,13 @@ const LoginPage = () => {
   }, [GOOGLE_CLIENT_ID]);
 
   return (
+    <>
+    <SEO
+      title="Login to STEMS AI — ICSI CS Exam Preparation"
+      description="Sign in to your STEMS AI account and continue your AI-powered ICSI Company Secretary exam preparation. Access mock tests, AI mentor, and study planner."
+      canonical="https://stemscsai.in/login"
+      noIndex={true}
+    />
     <div className="min-h-screen hero-gradient flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
@@ -223,6 +231,7 @@ const LoginPage = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /chat/
+Disallow: /learn/
+Disallow: /tests/
+Disallow: /drafting/
+Disallow: /planner/
+Disallow: /analytics/
+Disallow: /caselaws/
+Disallow: /subscription/
+Disallow: /profile/
+Disallow: /revision-notes/
+Disallow: /lectures/
+
+Sitemap: https://stemscsai.in/sitemap.xml

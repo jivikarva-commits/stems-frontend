@@ -2,36 +2,63 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="STEMS AI - AI Powered CS Education Platform" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#D4A847" />
+        <meta name="description" content="STEMS AI — India's #1 AI-powered Company Secretary & CS education platform. Master ICSI CSEET, Executive & Professional levels with AI mentoring, mock tests, and study planners." />
+
+        <!-- Canonical (overridden per-page by react-helmet-async) -->
+        <link rel="canonical" href="https://stemscsai.in/" />
+
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+        <!-- Preconnect for performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://us.i.posthog.com" />
 
-        <title>STEMS AI | AI Powered CS Education</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Inter:wght@600&display=swap" rel="stylesheet" />
 
-        <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop.
-        -->
+        <!-- Open Graph (fallback; react-helmet-async overrides per page) -->
+        <meta property="og:site_name" content="StemCSAI" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://stemscsai.in/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://stemscsai.in/og-image.jpg" />
 
-        <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the public folder during the build.
-        -->
+        <!-- Google Search Console verification (replace TOKEN with actual value) -->
+        <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_TOKEN" /> -->
+
+        <title>Learn CS, AI & STEM Online in India | StemCSAI</title>
+
+        <!-- Critical inline CSS for above-the-fold render -->
+        <style>
+            html { scroll-behavior: smooth; }
+            body { margin: 0; padding: 0; background: #07080F; color: #F0F0F8; }
+            #root { min-height: 100vh; }
+            /* Loading skeleton prevents CLS */
+            .app-loading {
+                display: flex; align-items: center; justify-content: center;
+                min-height: 100vh; background: #07080F;
+            }
+        </style>
     </head>
 
     <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <noscript>
+            <p style="font-family:sans-serif;text-align:center;padding:40px">
+                Enable JavaScript to use STEMS AI — India's AI-powered CS &amp; STEM education platform.
+            </p>
+        </noscript>
         <div id="root"></div>
 
-        <!--
-      This HTML file is a template.
-      The build step will place the bundled scripts into the <body> tag.
-    -->
-
-        <script>
+        <!-- PostHog analytics (async so it does not block render) -->
+        <script async>
             !(function (t, e) {
                 var o, n, p, r;
                 e.__SV ||
@@ -44,46 +71,32 @@
                                 (t[e] = function () {
                                     t.push(
                                         [e].concat(
-                                            Array.prototype.slice.call(
-                                                arguments,
-                                                0,
-                                            ),
+                                            Array.prototype.slice.call(arguments, 0),
                                         ),
                                     );
                                 });
                         }
-                        ((p = t.createElement("script")).type =
-                            "text/javascript"),
+                        ((p = t.createElement("script")).type = "text/javascript"),
                             (p.crossOrigin = "anonymous"),
                             (p.async = !0),
                             (p.src =
-                                s.api_host.replace(
-                                    ".i.posthog.com",
-                                    "-assets.i.posthog.com",
-                                ) + "/static/array.js"),
-                            (r =
-                                t.getElementsByTagName(
-                                    "script",
-                                )[0]).parentNode.insertBefore(p, r);
+                                s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+                                "/static/array.js"),
+                            (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
                         var u = e;
                         for (
                             void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
                                 u.people = u.people || [],
                                 u.toString = function (t) {
                                     var e = "posthog";
-                                    return (
-                                        "posthog" !== a && (e += "." + a),
-                                        t || (e += " (stub)"),
-                                        e
-                                    );
+                                    return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e;
                                 },
                                 u.people.toString = function () {
                                     return u.toString(1) + ".people (stub)";
                                 },
-                                o =
-                                    "init me ws ys ps bs capture je Di ks register register_once register_for_session unregister unregister_for_session Ps getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Es $s createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ss debug xs getPageViewId captureTraceFeedback captureTraceMetric".split(
-                                        " ",
-                                    ),
+                                o = "init me ws ys ps bs capture je Di ks register register_once register_for_session unregister unregister_for_session Ps getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Es $s createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ss debug xs getPageViewId captureTraceFeedback captureTraceMetric".split(
+                                    " ",
+                                ),
                                 n = 0;
                             n < o.length;
                             n++
