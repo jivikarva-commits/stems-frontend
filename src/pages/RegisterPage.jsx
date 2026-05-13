@@ -58,6 +58,37 @@ const RegisterPage = () => {
       description="Create your free STEMS AI account and start AI-powered ICSI Company Secretary exam preparation. 7-day free trial. No credit card required."
       canonical="https://stemscsai.in/register"
       noIndex={false}
+      structuredData={[
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://stemscsai.in/" },
+            { "@type": "ListItem", "position": 2, "name": "Sign Up",  "item": "https://stemscsai.in/register" }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is STEMS AI free to use?",
+              "acceptedAnswer": { "@type": "Answer", "text": "STEMS AI offers a 7-day free trial with full platform access. No credit card required to start." }
+            },
+            {
+              "@type": "Question",
+              "name": "Which ICSI levels does STEMS AI cover?",
+              "acceptedAnswer": { "@type": "Answer", "text": "STEMS AI covers all three ICSI levels: CSEET (foundation), Executive and Professional — all in a single subscription." }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need a credit card to sign up?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. You can create a free account and access the full 7-day trial without entering any payment details." }
+            }
+          ]
+        }
+      ]}
     />
     <div className="min-h-screen hero-gradient flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-md animate-fade-in">

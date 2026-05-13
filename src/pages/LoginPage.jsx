@@ -113,6 +113,14 @@ const LoginPage = () => {
       description="Sign in to your STEMS AI account and continue your AI-powered ICSI Company Secretary exam preparation. Access mock tests, AI mentor, and study planner."
       canonical="https://stemscsai.in/login"
       noIndex={true}
+      structuredData={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://stemscsai.in/" },
+          { "@type": "ListItem", "position": 2, "name": "Login", "item": "https://stemscsai.in/login" }
+        ]
+      }}
     />
     <div className="min-h-screen hero-gradient flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-md animate-fade-in">

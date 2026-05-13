@@ -8,6 +8,7 @@ import { API as API_BASE } from "./config/env";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import PricingPage from "./pages/PricingPage";
 import Dashboard from "./pages/Dashboard";
 import ChatPage from "./pages/ChatPage";
 import MockTestPage from "./pages/MockTestPage";
@@ -175,6 +176,7 @@ function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/pricing" element={<PricingPage />} />
       <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
       <Route path="/register" element={<PublicRoute><RegisterPage /></PublicRoute>} />
       <Route
