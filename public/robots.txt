@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /register
+Allow: /login
+Allow: /pricing
+
 Disallow: /dashboard/
 Disallow: /chat/
 Disallow: /learn/

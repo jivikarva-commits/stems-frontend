@@ -2,62 +2,161 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+
+        <!-- ═══════════════════════════════════════════════════════════
+             GOOGLE ANALYTICS 4  |  Measurement ID: G-19Z9T0FRTT
+        ═══════════════════════════════════════════════════════════ -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-19Z9T0FRTT"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-19Z9T0FRTT');
+        </script>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             CORE VIEWPORT & ROBOTS
+        ═══════════════════════════════════════════════════════════ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#D4A847" />
-        <meta name="description" content="STEMS AI — India's #1 AI-powered Company Secretary & CS education platform. Master ICSI CSEET, Executive & Professional levels with AI mentoring, mock tests, and study planners." />
 
-        <!-- Canonical (overridden per-page by react-helmet-async) -->
+        <!-- ═══════════════════════════════════════════════════════════
+             PRIMARY SEO META TAGS
+        ═══════════════════════════════════════════════════════════ -->
+        <title>AI-Powered CS &amp; STEM Education India — ICSI CSEET, Executive, Professional | StemCSAI</title>
+        <meta name="description" content="STEMS AI — India's #1 AI-powered Company Secretary &amp; CS education platform. Master ICSI CSEET, Executive &amp; Professional levels with AI mentoring, mock tests, drafting simulator, and smart study planners." />
+        <meta name="keywords" content="ICSI CS exam preparation, ICSI CSEET preparation, Company Secretary exam India, AI-powered CS coaching, ICSI Executive level, ICSI Professional level, online CS exam platform India, ICSI mock test, CS exam AI mentor, ICSI study material 2025, CSEET online course, CS drafting simulator" />
+        <meta name="author" content="STEMS AI" />
         <link rel="canonical" href="https://stemscsai.in/" />
 
-        <!-- Favicons -->
+        <!-- ═══════════════════════════════════════════════════════════
+             OPEN GRAPH (Social Sharing)
+        ═══════════════════════════════════════════════════════════ -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="STEMS AI" />
+        <meta property="og:title" content="AI-Powered CS &amp; STEM Education India — ICSI CSEET, Executive, Professional | StemCSAI" />
+        <meta property="og:description" content="Master the full ICSI curriculum with an AI that teaches, tests, evaluates your drafts, and builds a personalised study plan — all in one place." />
+        <meta property="og:url" content="https://stemscsai.in/" />
+        <meta property="og:image" content="https://stemscsai.in/og-image.png" />
+        <meta property="og:locale" content="en_IN" />
+
+        <!-- ═══════════════════════════════════════════════════════════
+             TWITTER CARD
+        ═══════════════════════════════════════════════════════════ -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI-Powered CS &amp; STEM Education for India | STEMS AI" />
+        <meta name="twitter:description" content="India's AI-powered ICSI CS exam prep platform. AI mentoring, mock tests, drafting simulator &amp; smart study planners for CSEET, Executive &amp; Professional levels." />
+        <meta name="twitter:image" content="https://stemscsai.in/og-image.png" />
+
+        <!-- ═══════════════════════════════════════════════════════════
+             PWA / MOBILE TECHNICAL TAGS
+        ═══════════════════════════════════════════════════════════ -->
+        <meta name="theme-color" content="#1a1a2e" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="STEMS AI" />
+
+        <!-- ═══════════════════════════════════════════════════════════
+             FAVICONS & MANIFEST
+        ═══════════════════════════════════════════════════════════ -->
         <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-        <!-- Preconnect for performance -->
+        <!-- ═══════════════════════════════════════════════════════════
+             PERFORMANCE — PRECONNECT
+        ═══════════════════════════════════════════════════════════ -->
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="preconnect" href="https://us.i.posthog.com" />
 
-        <!-- Google Fonts -->
+        <!-- ═══════════════════════════════════════════════════════════
+             GOOGLE FONTS
+        ═══════════════════════════════════════════════════════════ -->
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Inter:wght@600&display=swap" rel="stylesheet" />
 
-        <!-- Open Graph (fallback; react-helmet-async overrides per page) -->
-        <meta property="og:site_name" content="StemCSAI" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://stemscsai.in/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://stemscsai.in/og-image.jpg" />
-
-        <!-- Google Search Console verification (replace TOKEN with actual value) -->
+        <!-- ═══════════════════════════════════════════════════════════
+             GOOGLE SEARCH CONSOLE VERIFICATION
+             (replace YOUR_VERIFICATION_TOKEN with actual value)
+        ═══════════════════════════════════════════════════════════ -->
         <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_TOKEN" /> -->
 
-        <title>Learn CS, AI & STEM Online in India | StemCSAI</title>
-
-        <!-- Critical inline CSS for above-the-fold render -->
+        <!-- ═══════════════════════════════════════════════════════════
+             CRITICAL ABOVE-THE-FOLD CSS (prevents FOUC / layout shift)
+        ═══════════════════════════════════════════════════════════ -->
         <style>
             html { scroll-behavior: smooth; }
             body { margin: 0; padding: 0; background: #07080F; color: #F0F0F8; }
             #root { min-height: 100vh; }
-            /* Loading skeleton prevents CLS */
             .app-loading {
                 display: flex; align-items: center; justify-content: center;
                 min-height: 100vh; background: #07080F;
             }
         </style>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             JSON-LD STRUCTURED DATA — EducationalOrganization + Courses
+        ═══════════════════════════════════════════════════════════ -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "name": "STEMS AI",
+          "url": "https://stemscsai.in",
+          "description": "India's AI-powered ICSI Company Secretary & CS exam preparation platform covering CSEET, Executive and Professional levels.",
+          "logo": "https://stemscsai.in/favicon-192x192.png",
+          "sameAs": [],
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN"
+          },
+          "offers": {
+            "@type": "Offer",
+            "description": "AI-powered ICSI CS exam preparation — free 7-day trial, then subscription",
+            "url": "https://stemscsai.in/register"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "ICSI CS Exam Preparation Courses",
+            "itemListElement": [
+              {
+                "@type": "Course",
+                "name": "ICSI CSEET Preparation",
+                "description": "Foundation level — Business Communication, Legal Aptitude, Economics and Current Affairs.",
+                "provider": { "@type": "Organization", "name": "STEMS AI" }
+              },
+              {
+                "@type": "Course",
+                "name": "ICSI Executive Level Preparation",
+                "description": "Professional foundation — Company Law, Tax, Contracts and Economic & Commercial Laws.",
+                "provider": { "@type": "Organization", "name": "STEMS AI" }
+              },
+              {
+                "@type": "Course",
+                "name": "ICSI Professional Level Preparation",
+                "description": "Advanced secretaryship — Governance, Restructuring, Resolution of Corporate Disputes.",
+                "provider": { "@type": "Organization", "name": "STEMS AI" }
+              }
+            ]
+          }
+        }
+        </script>
     </head>
 
     <body>
         <noscript>
             <p style="font-family:sans-serif;text-align:center;padding:40px">
-                Enable JavaScript to use STEMS AI — India's AI-powered CS &amp; STEM education platform.
+                Enable JavaScript to use STEMS AI — India's AI-powered Company Secretary &amp; CS exam preparation platform.
             </p>
         </noscript>
         <div id="root"></div>
 
-        <!-- PostHog analytics (async so it does not block render) -->
+        <!-- ═══════════════════════════════════════════════════════════
+             POSTHOG ANALYTICS (async — does not block render)
+        ═══════════════════════════════════════════════════════════ -->
         <script async>
             !(function (t, e) {
                 var o, n, p, r;

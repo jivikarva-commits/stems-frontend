@@ -307,8 +307,10 @@ export default function LandingPage() {
 
       <SEO
         title="AI-Powered CS & STEM Education India — ICSI CSEET, Executive, Professional"
-        description="India's #1 AI-powered Company Secretary platform. AI mentoring, mock tests & study planner for ICSI CSEET, Executive & Professional. Start free trial today."
+        description="STEMS AI — India's #1 AI-powered Company Secretary & CS education platform. Master ICSI CSEET, Executive & Professional levels with AI mentoring, mock tests, drafting simulator, and smart study planners."
         canonical="https://stemscsai.in/"
+        ogImage="https://stemscsai.in/og-image.png"
+        keywords="ICSI CS exam preparation, ICSI CSEET preparation, Company Secretary exam India, AI-powered CS coaching, ICSI Executive level, ICSI Professional level, online CS exam platform India, ICSI mock test, CS exam AI mentor, ICSI study material 2025, CSEET online course, CS drafting simulator"
         structuredData={structuredData}
       />
 
@@ -421,7 +423,11 @@ export default function LandingPage() {
             </div>
 
             {/* H1 */}
-            <h1 className="lp-h2" style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: "clamp(36px,4.5vw,62px)", fontWeight: 900, lineHeight: 1.1, color: G.text, marginBottom: 22 }}>
+            <h1
+              className="lp-h2"
+              aria-label="AI-Powered Company Secretary, CS & STEM Education for India — STEMS AI"
+              style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: "clamp(36px,4.5vw,62px)", fontWeight: 900, lineHeight: 1.1, color: G.text, marginBottom: 22 }}
+            >
               AI-Powered<br />
               <span style={{ background: `linear-gradient(135deg,${G.gold},#E8C470)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 CS &amp; STEM Education
