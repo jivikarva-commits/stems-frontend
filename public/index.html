@@ -23,21 +23,20 @@
 
         <!-- ═══════════════════════════════════════════════════════════
              PRIMARY SEO META TAGS
+             NOTE: <title>, <meta description> and <link canonical> are
+             injected per-page by react-helmet-async (SEO.jsx component).
+             Only truly global, non-page-specific tags live here.
         ═══════════════════════════════════════════════════════════ -->
-        <title>AI-Powered CS &amp; STEM Education India — ICSI CSEET, Executive, Professional | StemCSAI</title>
-        <meta name="description" content="STEMS AI — India's #1 AI-powered Company Secretary &amp; CS education platform. Master ICSI CSEET, Executive &amp; Professional levels with AI mentoring, mock tests, drafting simulator, and smart study planners." />
         <meta name="keywords" content="ICSI CS exam preparation, ICSI CSEET preparation, Company Secretary exam India, AI-powered CS coaching, ICSI Executive level, ICSI Professional level, online CS exam platform India, ICSI mock test, CS exam AI mentor, ICSI study material 2025, CSEET online course, CS drafting simulator" />
         <meta name="author" content="STEMS AI" />
-        <link rel="canonical" href="https://stemscsai.in/" />
 
         <!-- ═══════════════════════════════════════════════════════════
              OPEN GRAPH (Social Sharing)
+             Page-specific og:title, og:description, og:url and
+             og:canonical are set by react-helmet-async per page.
         ═══════════════════════════════════════════════════════════ -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="STEMS AI" />
-        <meta property="og:title" content="AI-Powered CS &amp; STEM Education India — ICSI CSEET, Executive, Professional | StemCSAI" />
-        <meta property="og:description" content="Master the full ICSI curriculum with an AI that teaches, tests, evaluates your drafts, and builds a personalised study plan — all in one place." />
-        <meta property="og:url" content="https://stemscsai.in/" />
         <meta property="og:image" content="https://stemscsai.in/og-image.png" />
         <meta property="og:locale" content="en_IN" />
 
@@ -45,8 +44,6 @@
              TWITTER CARD
         ═══════════════════════════════════════════════════════════ -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI-Powered CS &amp; STEM Education for India | STEMS AI" />
-        <meta name="twitter:description" content="India's AI-powered ICSI CS exam prep platform. AI mentoring, mock tests, drafting simulator &amp; smart study planners for CSEET, Executive &amp; Professional levels." />
         <meta name="twitter:image" content="https://stemscsai.in/og-image.png" />
 
         <!-- ═══════════════════════════════════════════════════════════
@@ -111,7 +108,10 @@
           "url": "https://stemscsai.in",
           "description": "India's AI-powered ICSI Company Secretary & CS exam preparation platform covering CSEET, Executive and Professional levels.",
           "logo": "https://stemscsai.in/favicon-192x192.png",
-          "sameAs": [],
+          "sameAs": [
+            "https://linkedin.com/company/stemscsai",
+            "https://twitter.com/stemscsai"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "IN"
@@ -160,7 +160,11 @@
             "url": "https://stemscsai.in/logo.png",
             "width": 512,
             "height": 512
-          }
+          },
+          "sameAs": [
+            "https://linkedin.com/company/stemscsai",
+            "https://twitter.com/stemscsai"
+          ]
         }
         </script>
     </head>

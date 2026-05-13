@@ -519,6 +519,55 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── PLATFORM HIGHLIGHTS (images) ──────────────────────── */}
+      <section aria-label="Platform highlights" style={{ background: G.surface, padding: "80px clamp(16px,5vw,80px)" }}>
+        <div style={S.inner}>
+          <div style={S.label}><span style={{ display: "block", width: 24, height: 2, background: G.gold }} /> Platform Highlights</div>
+          <h2 className="lp-h2" style={S.h2}>Built for Every ICSI Level</h2>
+          <div className="lp-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, marginTop: 48 }}>
+            <figure style={{ margin: 0 }}>
+              <img
+                src="/img-ai-cs-exam-preparation.png"
+                alt="AI powered CS exam preparation platform India - STEMS AI"
+                width="800"
+                height="420"
+                loading="lazy"
+                style={{ width: "100%", height: "auto", borderRadius: 14, border: `1px solid ${G.border}`, display: "block" }}
+              />
+              <figcaption style={{ fontSize: 13, color: G.textDim, marginTop: 10, lineHeight: 1.5 }}>
+                AI-powered teaching engine for ICSI CS exam preparation in India
+              </figcaption>
+            </figure>
+            <figure style={{ margin: 0 }}>
+              <img
+                src="/img-icsi-cseet-study-material.png"
+                alt="ICSI CSEET study material with AI — adaptive learning for Company Secretary students"
+                width="800"
+                height="420"
+                loading="lazy"
+                style={{ width: "100%", height: "auto", borderRadius: 14, border: `1px solid ${G.border}`, display: "block" }}
+              />
+              <figcaption style={{ fontSize: 13, color: G.textDim, marginTop: 10, lineHeight: 1.5 }}>
+                Adaptive ICSI CSEET study material covering all foundation subjects
+              </figcaption>
+            </figure>
+            <figure style={{ margin: 0 }}>
+              <img
+                src="/img-cs-mock-test-online.png"
+                alt="Company Secretary mock test online India — ICSI MCQs with AI evaluation"
+                width="800"
+                height="420"
+                loading="lazy"
+                style={{ width: "100%", height: "auto", borderRadius: 14, border: `1px solid ${G.border}`, display: "block" }}
+              />
+              <figcaption style={{ fontSize: 13, color: G.textDim, marginTop: 10, lineHeight: 1.5 }}>
+                Online Company Secretary mock tests with instant AI scoring and feedback
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {/* ── LEVELS ─────────────────────────────────────────────── */}
       <section id="levels" className="lp-section-pad" style={{ background: G.surface, padding: "90px clamp(16px,5vw,80px)" }}>
         <div style={S.inner}>
@@ -595,6 +644,16 @@ export default function LandingPage() {
               <span style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 17, fontWeight: 700, color: G.text }}>STEMS AI</span>
             </div>
             <p style={{ fontSize: 13, color: G.textDim, lineHeight: 1.7, maxWidth: 220 }}>India's AI-powered ICSI Company Secretary &amp; CS exam preparation platform.</p>
+            <a
+              href="https://www.icsi.edu"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 12, fontSize: 12, color: G.gold, textDecoration: "none", fontWeight: 500 }}
+              onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
+              onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
+            >
+              Official ICSI Website ↗
+            </a>
           </div>
 
           {/* Platform links */}
