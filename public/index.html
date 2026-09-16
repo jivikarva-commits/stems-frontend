@@ -1,241 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             GOOGLE ANALYTICS 4  |  Measurement ID: G-19Z9T0FRTT
-        ═══════════════════════════════════════════════════════════ -->
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-19Z9T0FRTT"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-19Z9T0FRTT');
-        </script>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             CORE VIEWPORT & ROBOTS
-        ═══════════════════════════════════════════════════════════ -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="index, follow" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             PRIMARY SEO META TAGS
-             NOTE: <title>, <meta description> and <link canonical> are
-             injected per-page by react-helmet-async (SEO.jsx component).
-             Only truly global, non-page-specific tags live here.
-        ═══════════════════════════════════════════════════════════ -->
-        <meta name="keywords" content="ICSI CS exam preparation, ICSI CSEET preparation, Company Secretary exam India, AI-powered CS coaching, ICSI Executive level, ICSI Professional level, online CS exam platform India, ICSI mock test, CS exam AI mentor, ICSI study material 2025, CSEET online course, CS drafting simulator" />
-        <meta name="author" content="STEMS AI" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             OPEN GRAPH (Social Sharing)
-             Page-specific og:title, og:description, og:url and
-             og:canonical are set by react-helmet-async per page.
-        ═══════════════════════════════════════════════════════════ -->
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="STEMS AI" />
-        <meta property="og:image" content="https://stemscsai.in/og-image.png" />
-        <meta property="og:locale" content="en_IN" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             TWITTER CARD
-        ═══════════════════════════════════════════════════════════ -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://stemscsai.in/og-image.png" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             PWA / MOBILE TECHNICAL TAGS
-        ═══════════════════════════════════════════════════════════ -->
-        <meta name="theme-color" content="#1a1a2e" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="STEMS AI" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             FAVICONS & MANIFEST
-        ═══════════════════════════════════════════════════════════ -->
-        <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             PERFORMANCE — PRECONNECT + DNS-PREFETCH + PRELOAD
-        ═══════════════════════════════════════════════════════════ -->
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="preconnect" href="https://us.i.posthog.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;700&display=swap" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             GOOGLE FONTS
-        ═══════════════════════════════════════════════════════════ -->
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Inter:wght@600&display=swap" rel="stylesheet" />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             GOOGLE SEARCH CONSOLE VERIFICATION
-             (replace YOUR_VERIFICATION_TOKEN with actual value)
-        ═══════════════════════════════════════════════════════════ -->
-        <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_TOKEN" /> -->
-
-        <!-- ═══════════════════════════════════════════════════════════
-             CRITICAL ABOVE-THE-FOLD CSS (prevents FOUC / layout shift)
-        ═══════════════════════════════════════════════════════════ -->
-        <style>
-            html { scroll-behavior: smooth; }
-            body { margin: 0; padding: 0; background: #07080F; color: #F0F0F8; }
-            #root { min-height: 100vh; }
-            .app-loading {
-                display: flex; align-items: center; justify-content: center;
-                min-height: 100vh; background: #07080F;
-            }
-        </style>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             JSON-LD STRUCTURED DATA — EducationalOrganization + Courses
-        ═══════════════════════════════════════════════════════════ -->
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "EducationalOrganization",
-          "name": "STEMS AI",
-          "url": "https://stemscsai.in",
-          "description": "India's AI-powered ICSI Company Secretary & CS exam preparation platform covering CSEET, Executive and Professional levels.",
-          "logo": "https://stemscsai.in/favicon-192x192.png",
-          "sameAs": [
-            "https://linkedin.com/company/stemscsai",
-            "https://twitter.com/stemscsai"
-          ],
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IN"
-          },
-          "offers": {
-            "@type": "Offer",
-            "description": "AI-powered ICSI CS exam preparation — free 7-day trial, then subscription",
-            "url": "https://stemscsai.in/register"
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "ICSI CS Exam Preparation Courses",
-            "itemListElement": [
-              {
-                "@type": "Course",
-                "name": "ICSI CSEET Preparation",
-                "description": "Foundation level — Business Communication, Legal Aptitude, Economics and Current Affairs.",
-                "provider": { "@type": "Organization", "name": "STEMS AI" }
-              },
-              {
-                "@type": "Course",
-                "name": "ICSI Executive Level Preparation",
-                "description": "Professional foundation — Company Law, Tax, Contracts and Economic & Commercial Laws.",
-                "provider": { "@type": "Organization", "name": "STEMS AI" }
-              },
-              {
-                "@type": "Course",
-                "name": "ICSI Professional Level Preparation",
-                "description": "Advanced secretaryship — Governance, Restructuring, Resolution of Corporate Disputes.",
-                "provider": { "@type": "Organization", "name": "STEMS AI" }
-              }
-            ]
-          }
-        }
-        </script>
-
-        <!-- JSON-LD: Organization with Logo (enables Google logo in search results) -->
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "STEMS AI",
-          "url": "https://stemscsai.in",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://stemscsai.in/logo.png",
-            "width": 512,
-            "height": 512
-          },
-          "sameAs": [
-            "https://linkedin.com/company/stemscsai",
-            "https://twitter.com/stemscsai"
-          ]
-        }
-        </script>
-    </head>
-
-    <body>
-        <noscript>
-            <p style="font-family:sans-serif;text-align:center;padding:40px">
-                Enable JavaScript to use STEMS AI — India's AI-powered Company Secretary &amp; CS exam preparation platform.
-            </p>
-        </noscript>
-        <div id="root"></div>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             POSTHOG ANALYTICS (async — does not block render)
-        ═══════════════════════════════════════════════════════════ -->
-        <script async>
-            !(function (t, e) {
-                var o, n, p, r;
-                e.__SV ||
-                    ((window.posthog = e),
-                    (e._i = []),
-                    (e.init = function (i, s, a) {
-                        function g(t, e) {
-                            var o = e.split(".");
-                            2 == o.length && ((t = t[o[0]]), (e = o[1])),
-                                (t[e] = function () {
-                                    t.push(
-                                        [e].concat(
-                                            Array.prototype.slice.call(arguments, 0),
-                                        ),
-                                    );
-                                });
-                        }
-                        ((p = t.createElement("script")).type = "text/javascript"),
-                            (p.crossOrigin = "anonymous"),
-                            (p.async = !0),
-                            (p.src =
-                                s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
-                                "/static/array.js"),
-                            (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
-                        var u = e;
-                        for (
-                            void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
-                                u.people = u.people || [],
-                                u.toString = function (t) {
-                                    var e = "posthog";
-                                    return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e;
-                                },
-                                u.people.toString = function () {
-                                    return u.toString(1) + ".people (stub)";
-                                },
-                                o = "init me ws ys ps bs capture je Di ks register register_once register_for_session unregister unregister_for_session Ps getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Es $s createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ss debug xs getPageViewId captureTraceFeedback captureTraceMetric".split(
-                                    " ",
-                                ),
-                                n = 0;
-                            n < o.length;
-                            n++
-                        )
-                            g(u, o[n]);
-                        e._i.push([i, s, a]);
-                    }),
-                    (e.__SV = 1));
-            })(document, window.posthog || []);
-            posthog.init("phc_xAvL2Iq4tFmANRE7kzbKwaSqp1HJjN7x48s3vr0CMjs", {
-                api_host: "https://us.i.posthog.com",
-                person_profiles: "identified_only",
-                session_recording: {
-                    recordCrossOriginIframes: true,
-                    capturePerformance: false,
-                },
-            });
-        </script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090c10" />
+    <title>USA Client Data — Business Leads Database | Stems</title>
+    <meta
+      data-rh="true"
+      name="description"
+      content="Explore USA business data organised by category and city. CSV files delivered through Google Drive after a ₹199 one-time payment."
+    />
+    <meta
+      data-rh="true"
+      property="og:title"
+      content="USA Client Data — Business Leads Database | Stems"
+    />
+    <meta
+      data-rh="true"
+      property="og:description"
+      content="Category-wise USA business prospecting data. ₹199 one-time digital access."
+    />
+    <meta data-rh="true" property="og:url" content="https://stemscsai.in/" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta
+      data-rh="true"
+      property="og:image"
+      content="https://stemscsai.in/og-database.svg"
+    />
+    <meta data-rh="true" name="twitter:card" content="summary" />
+    <meta
+      data-rh="true"
+      name="twitter:title"
+      content="USA Client Data — Business Leads Database | Stems"
+    />
+    <meta
+      data-rh="true"
+      name="twitter:description"
+      content="Category-wise USA business prospecting data. ₹199 one-time digital access."
+    />
+    <link data-rh="true" rel="canonical" href="https://stemscsai.in/" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/stems-mark.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: #090c10;
+      }
+      #root {
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript
+      >Stems — USA Client Data. Enable JavaScript to view the product and access
+      secure checkout.</noscript
+    >
+    <div id="root"></div>
+  </body>
 </html>

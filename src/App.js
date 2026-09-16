@@ -1,25 +1,35 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { lazy, Suspense, useState, useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import axios from "axios";
 import { Toaster } from "./components/ui/sonner";
 import { API as API_BASE } from "./config/env";
 
 // Pages
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import PricingPage from "./pages/PricingPage";
-import Dashboard from "./pages/Dashboard";
-import ChatPage from "./pages/ChatPage";
-import MockTestPage from "./pages/MockTestPage";
-import DraftingLab from "./pages/DraftingLab";
-import StudyPlanner from "./pages/StudyPlanner";
-import AnalyticsPage from "./pages/AnalyticsPage";
-import CaseLawsPage from "./pages/CaseLawsPage";
-import SubscriptionPage from "./pages/SubscriptionPage";
-import ProfilePage from "./pages/ProfilePage";
-import RevisionNotesPage from "./pages/RevisionNotesPage";
-import VideoLectures from "./pages/VideoLectures";
+import Storefront from "./components/storefront/Storefront";
+import PaymentSuccess from "./components/storefront/PaymentSuccess";
+import LegalPage from "./components/storefront/LegalPage";
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const ChatPage = lazy(() => import("./pages/ChatPage"));
+const MockTestPage = lazy(() => import("./pages/MockTestPage"));
+const DraftingLab = lazy(() => import("./pages/DraftingLab"));
+const StudyPlanner = lazy(() => import("./pages/StudyPlanner"));
+const AnalyticsPage = lazy(() => import("./pages/AnalyticsPage"));
+const CaseLawsPage = lazy(() => import("./pages/CaseLawsPage"));
+const SubscriptionPage = lazy(() => import("./pages/SubscriptionPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const RevisionNotesPage = lazy(() => import("./pages/RevisionNotesPage"));
+const VideoLectures = lazy(() => import("./pages/VideoLectures"));
 
 export const API = API_BASE;
 
@@ -52,7 +62,7 @@ const PublicRoute = ({ children }) => {
 
       try {
         await axios.get(`${API}/auth/me`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
         setIsAuthenticated(true);
       } catch (error) {
@@ -89,7 +99,7 @@ const ProtectedRoute = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(
-    location.state?.user ? true : null
+    location.state?.user ? true : null,
   );
   const [user, setUser] = useState(location.state?.user || null);
   const [isLoading, setIsLoading] = useState(!location.state?.user);
@@ -108,7 +118,7 @@ const ProtectedRoute = ({ children }) => {
       if (token) {
         try {
           const response = await axios.get(`${API}/auth/me`, {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` },
           });
           setUser(response.data);
           setIsAuthenticated(true);
@@ -121,7 +131,7 @@ const ProtectedRoute = ({ children }) => {
         // Try cookie auth
         try {
           const response = await axios.get(`${API}/auth/me`, {
-            withCredentials: true
+            withCredentials: true,
           });
           setUser(response.data);
           setIsAuthenticated(true);
@@ -167,7 +177,7 @@ export function useLoginRedirect() {
   return {
     redirectAfterLogin: (user) => {
       navigate("/dashboard", { replace: true, state: { user } });
-    }
+    },
   };
 }
 
@@ -175,10 +185,33 @@ export function useLoginRedirect() {
 function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
+      <Route path="/" element={<Storefront />} />
+      <Route path="/cs-platform" element={<LandingPage />} />
+      <Route path="/download" element={<PaymentSuccess />} />
+      {["privacy", "terms", "refund", "contact"].map((type) => (
+        <Route
+          key={type}
+          path={`/${type}`}
+          element={<LegalPage type={type} />}
+        />
+      ))}
       <Route path="/pricing" element={<PricingPage />} />
-      <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
-      <Route path="/register" element={<PublicRoute><RegisterPage /></PublicRoute>} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/chat"
         element={
@@ -283,7 +316,23 @@ function AppRouter() {
 function App() {
   return (
     <BrowserRouter>
-      <AppRouter />
+      <Suspense
+        fallback={
+          <div
+            role="status"
+            style={{
+              padding: 40,
+              background: "#090c10",
+              color: "white",
+              minHeight: "100vh",
+            }}
+          >
+            Loading…
+          </div>
+        }
+      >
+        <AppRouter />
+      </Suspense>
       <Toaster position="top-right" richColors />
     </BrowserRouter>
   );

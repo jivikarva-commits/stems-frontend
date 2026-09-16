@@ -1,20 +1,6 @@
 User-agent: *
 Allow: /
-Allow: /register
-Allow: /login
-Allow: /pricing
-
-Disallow: /dashboard/
-Disallow: /chat/
-Disallow: /learn/
-Disallow: /tests/
-Disallow: /drafting/
-Disallow: /planner/
-Disallow: /analytics/
-Disallow: /caselaws/
-Disallow: /subscription/
-Disallow: /profile/
-Disallow: /revision-notes/
-Disallow: /lectures/
-
+Disallow: /download
+Disallow: /dashboard
+Disallow: /api/
 Sitemap: https://stemscsai.in/sitemap.xml

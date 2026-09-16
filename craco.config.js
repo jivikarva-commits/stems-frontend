@@ -2,6 +2,18 @@
 const path = require("path");
 require("dotenv").config();
 
+// Preserve the project's earlier VITE_* hosting variable names while CRA reads
+// explicit REACT_APP_* values. Ignore the placeholder committed for local setup.
+if (
+  !process.env.REACT_APP_BACKEND_URL &&
+  process.env.VITE_API_URL &&
+  !process.env.VITE_API_URL.includes("your-render-backend-url")
+) {
+  process.env.REACT_APP_BACKEND_URL = process.env.VITE_API_URL;
+}
+process.env.REACT_APP_GOOGLE_CLIENT_ID ||= process.env.VITE_GOOGLE_CLIENT_ID;
+process.env.REACT_APP_RAZORPAY_KEY_ID ||= process.env.VITE_RAZORPAY_KEY_ID;
+
 // Check if we're in development/preview mode (not production build)
 // Craco sets NODE_ENV=development for start, NODE_ENV=production for build
 const isDevServer = process.env.NODE_ENV !== "production";
@@ -9,7 +21,7 @@ const isDevServer = process.env.NODE_ENV !== "production";
 // Environment variable overrides
 const config = {
   enableHealthCheck: process.env.ENABLE_HEALTH_CHECK === "true",
-  enableVisualEdits: isDevServer, // Only enable during dev server
+  enableVisualEdits: isDevServer && process.env.ENABLE_VISUAL_EDITS === "true", // Opt in: legacy transform wraps table/title children in spans.
 };
 
 // Conditionally load visual edits modules only in dev mode
