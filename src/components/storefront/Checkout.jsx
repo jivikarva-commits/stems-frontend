@@ -1,7 +1,7 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight, X, ShieldCheck } from "lucide-react";
-import { API } from "../../config/env";
+import { API, API_URL } from "../../config/env";
 import { product, priceLabel } from "../../config/product";
 import { track, trackPurchase } from "../../lib/tracking";
 const Checkout = createContext(null);
@@ -64,6 +64,16 @@ export function CheckoutProvider({ children }) {
   const [retry, setRetry] = useState(Boolean(sessionStorage.getItem(PENDING)));
   const lock = useRef(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Prepare both remote dependencies while the visitor reads the page. Render
+    // services can need time to wake, and Razorpay's SDK should already be in the
+    // browser before the visitor asks to pay.
+    loadCheckout().catch(() => {});
+    if (API_URL) {
+      fetch(`${API_URL}/health`, { cache: "no-store" }).catch(() => {});
+    }
+  }, []);
   const finish = () => {
     lock.current = false;
     setBusy(false);
@@ -108,8 +118,12 @@ export function CheckoutProvider({ children }) {
           /* Pending or expired */
         }
       }
-      await loadCheckout();
-      const order = await api("/product/create-order", { method: "POST" });
+      // Loading the SDK and creating the order are independent. Running them
+      // together makes checkout wait for only the slower request, not both.
+      const [order] = await Promise.all([
+        api("/product/create-order", { method: "POST" }),
+        loadCheckout(),
+      ]);
       sessionStorage.setItem(TOKEN, order.token);
       track("InitiateCheckout", {
         value: order.amount / 100,

@@ -246,11 +246,9 @@ export function Hero() {
           PROSPECTING
         </p>
         <h1>
-          USA client data.
+          500K+ USA
           <br />
-          Your next lead.
-          <br />
-          <span>A stronger start.</span>
+          <span>CLIENT DATA</span>
         </h1>
         <p className="hero-description">
           Less searching. More possibilities. An organised business prospecting
