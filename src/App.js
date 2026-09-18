@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import { Toaster } from "./components/ui/sonner";
+import ConsentBanner from "./components/ConsentBanner";
 import { API as API_BASE } from "./config/env";
 
 // Pages
@@ -334,6 +335,7 @@ function App() {
         <AppRouter />
       </Suspense>
       <Toaster position="top-right" richColors />
+      <ConsentBanner />
     </BrowserRouter>
   );
 }
