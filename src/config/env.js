@@ -4,7 +4,7 @@ export const API_URL = trimTrailingSlash(
   process.env.REACT_APP_BACKEND_URL ||
     process.env.REACT_APP_API_URL ||
     (process.env.NODE_ENV === "production"
-      ? "https://stemsai-backend-1.onrender.com"
+      ? "https://store-api.stemsai.in"
       : ""),
 );
 export const API = `${API_URL}/api`;
