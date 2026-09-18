@@ -2,6 +2,7 @@ import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { CheckoutProvider, PaymentButton } from "./Checkout";
 import { trackPurchase } from "../../lib/tracking";
+import { trackAccessClick } from "../../lib/storefrontAnalytics";
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({ useNavigate: () => mockNavigate }), {
   virtual: true,
@@ -10,6 +11,9 @@ jest.mock("../../config/env", () => ({ API: "https://api.example/api" }));
 jest.mock("../../lib/tracking", () => ({
   track: jest.fn(),
   trackPurchase: jest.fn(),
+}));
+jest.mock("../../lib/storefrontAnalytics", () => ({
+  trackAccessClick: jest.fn(),
 }));
 let host, root, options, failure;
 const response = (data, ok = true) => ({ ok, json: async () => data });
@@ -63,6 +67,7 @@ const payload = {
 };
 test("all purchase buttons use server-priced Razorpay order", async () => {
   await click();
+  expect(trackAccessClick).toHaveBeenCalledTimes(1);
   expect(options.amount).toBe(19900);
   expect(options.order_id).toBe("order_test");
   expect(options.currency).toBe("INR");

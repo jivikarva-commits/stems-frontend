@@ -4,6 +4,7 @@ import { ArrowUpRight, X, ShieldCheck } from "lucide-react";
 import { API, API_URL } from "../../config/env";
 import { product, priceLabel } from "../../config/product";
 import { track, trackPurchase } from "../../lib/tracking";
+import { trackAccessClick } from "../../lib/storefrontAnalytics";
 const Checkout = createContext(null);
 const TOKEN = "stems_purchase_token";
 const PENDING = "stems_pending_payment";
@@ -98,6 +99,7 @@ export function CheckoutProvider({ children }) {
     }
   }
   async function start() {
+    trackAccessClick();
     if (lock.current) return;
     lock.current = true;
     setBusy(true);
