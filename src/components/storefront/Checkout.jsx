@@ -99,7 +99,6 @@ export function CheckoutProvider({ children }) {
     }
   }
   async function start() {
-    trackAccessClick();
     if (lock.current) return;
     lock.current = true;
     setBusy(true);
@@ -195,10 +194,14 @@ export function CheckoutProvider({ children }) {
 }
 export function PaymentButton({ children, className = "" }) {
   const { start, busy } = useContext(Checkout);
+  const handleClick = () => {
+    trackAccessClick();
+    start();
+  };
   return (
     <button
       className={`st-button ${className}`}
-      onClick={start}
+      onClick={handleClick}
       disabled={busy}
     >
       {busy
