@@ -96,7 +96,7 @@ export const faqs = [
   ],
   [
     "Is the information recently verified?",
-    "No freshness or verification guarantee is made. The inspected business-consultant files show October 2024 modification dates. Check each business’s current details before relying on a record.",
+    "Business information can change over time. Check each business’s current details before relying on a record.",
   ],
   [
     "How soon will I receive access?",

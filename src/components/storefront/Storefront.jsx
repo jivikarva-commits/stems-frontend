@@ -459,8 +459,7 @@ export function Features() {
         </div>
       </div>
       <p className="section-note">
-        {product.fieldNote} The inspected files were modified in October 2024;
-        validate records before use.
+        {product.fieldNote} Validate records before use.
       </p>
       <p className="section-note">
         Observed fields: {product.fields.join(" · ")}
